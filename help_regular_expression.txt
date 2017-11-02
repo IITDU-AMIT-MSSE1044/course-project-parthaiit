@@ -1,0 +1,27 @@
+find what : .*(bug.cgi\?id=\d+)\s*\|.*\n
+replace with : \1\n
+
+
+.*REJECT.*
+\n
+
+
+.*DISPUTED.*
+\n
+
+.*RESERVED.*
+\n
+
+
+.*bugzilla.redhat.*
+
+
+^(.*)
+'\1'
+
+\n
+,
+
+
+
+copy *.csv combine.csv
