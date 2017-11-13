@@ -1,7 +1,7 @@
 clear all; 
 close all; 
  
- delete('output_bug.txt');
+ delete('regular_output_bug.txt');
 
 
 stopwords_cellstring={'a', 'about', 'above', 'above', 'across', 'after', ...
@@ -12,7 +12,7 @@ stopwords_cellstring={'a', 'about', 'above', 'above', 'across', 'after', ...
     'becomes', 'becoming', 'been', 'before', 'beforehand', 'behind', 'being', 'below',...
     'beside', 'besides', 'between', 'beyond', 'bill', 'both', 'bottom','but', 'by',...
     'call', 'can', 'cannot', 'cant', 'co', 'con', 'could', 'couldnt', 'cry', 'de',...
-    'describe', 'detail', 'do', 'done', 'down', 'due', 'during', 'each', 'eg', 'eight',...
+    'describe', 'detail', 'do', 'done', 'down', 'due', 'during', 'each', 'eg', 'eight',... 
     'either', 'eleven','else', 'elsewhere', 'empty', 'enough', 'etc', 'even', 'ever', ...
     'every', 'everyone', 'everything', 'everywhere', 'except', 'few', 'fifteen', 'fify',...
     'fill', 'find', 'fire', 'first', 'five', 'for', 'former', 'formerly', 'forty', 'found',...
@@ -23,7 +23,7 @@ stopwords_cellstring={'a', 'about', 'above', 'above', 'across', 'after', ...
     'latter', 'latterly', 'least', 'less', 'ltd', 'made', 'many', 'may', 'me', 'meanwhile',...
     'might', 'mill', 'mine', 'more', 'moreover', 'most', 'mostly', 'move', 'much', 'must',...
     'my', 'myself', 'name', 'namely', 'neither', 'never', 'nevertheless', 'next', 'nine',...
-    'no', 'nobody', 'none', 'noone', 'nor', 'not', 'nothing', 'now', 'nowhere', 'of', 'off',... 
+    'no', 'nobody', 'none', 'noone', 'nor', 'not', 'nothing', 'now', 'nowhere', 'of', 'off',...
     'often', 'on', 'once', 'one', 'only', 'onto', 'or', 'other', 'others', 'otherwise',...
     'our', 'ours', 'ourselves', 'out', 'over', 'own','part', 'per', 'perhaps', 'please',...
     'put', 'rather', 're', 'same', 'see', 'seem', 'seemed', 'seeming', 'seems', 'serious',...
@@ -42,7 +42,7 @@ stopwords_cellstring={'a', 'about', 'above', 'above', 'across', 'after', ...
 
 % str1 = 'Alligator in water of the pool'
 % fid  = fopen('cve_description.csv','r');
-fid  = fopen('bug_description.csv','r');
+fid  = fopen('regular_bug.csv','r');
 count = 1; 
 while 1 
    tline = fgetl(fid);
@@ -60,7 +60,7 @@ out_str1 = strjoin(stem(~ismember(stem,stopwords_cellstring)),' ');
 
  
 %  fid1 = fopen('output.txt','a');
-fid1 = fopen('output_bug.txt','a');
+fid1 = fopen('regular_output_bug.txt','a');
 fprintf(fid1, '%s\n',out_str1);
 fclose(fid1);
 end
@@ -68,5 +68,35 @@ end
 
 fclose(fid);
 
+
+
+% for cve bug
+delete('cve_output_bug.txt');
+
+fid  = fopen('CVE_Bug.csv','r');
+count = 1; 
+while 1 
+   tline = fgetl(fid);
+   if ~ischar(tline)
+       break;
+   end
+   tline = lower(tline);
+split1 = regexp(tline,'\s','Split');
+for i=1:size(split1,2);
+    stem {i} = porterStemmer(split1{i});
+ 
+    
+end
+out_str1 = strjoin(stem(~ismember(stem,stopwords_cellstring)),' ');
+
+ 
+%  fid1 = fopen('output.txt','a');
+fid1 = fopen('cve_output_bug.txt','a');
+fprintf(fid1, '%s\n',out_str1);
+fclose(fid1);
+end
+
+
+fclose(fid);
 
  
