@@ -21,8 +21,16 @@ In order to successfully capture all the information in a set of N documents, th
 After creating term document matrix a classifier(Decision Tree) was introduced to classify a given bug as an HIB or regular bug.The classification was performed using 10-fold cross validation. Classification results are shown in terms of True Positives (TP) and True Negatives (TN).
 
 ## My work
-I mostly do the same thing that base paper does. But I enhance the regular bug over the time. That means they take 6000 bug from 2006 to 2011. But I take 3453 bug from 1999 to 2017. On the other hand I add different result representation method like precision, recall, f-measure.
+I mostly do the same thing that base paper does. But I enhance the regular bug over the time. That means they take 6000 bug from 2006 to 2011. But I take 3453 bug from 1999 to 2017. On the other hand I take top 1000 highly frequent word to make term document matrix. I also add different result representation method like precision, recall, f-measure.
 
 ## Data
 This data is used in this paper. But for the time constrains we take 3453 regular bug and 3999 CVE related bug. Link form where I collect data is given bellow
+https://cve.mitre.org/data/downloads/index.html
+
+https://bugzilla.redhat.com/buglist.cgi?bug_status=__closed__&content=BUG&limit=0&no_redirect=1&order=priority%2Cbug_severity&product=Red%20Hat%20Linux&query_format=specific
+
+
+## How to use
+Firstly we take two dataset, one for regular bug, and another for HIB bug. Then preprocessing technique have to apply on both dataset. 
+
 
