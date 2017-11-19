@@ -31,6 +31,6 @@ https://bugzilla.redhat.com/buglist.cgi?bug_status=__closed__&content=BUG&limit=
 
 
 ## How to use
-Firstly we take two dataset, one for regular bug, and another for HIB bug. Then preprocessing technique have to apply on both dataset. 
+Firstly we take two dataset, one for regular bug, and another for HIB bug. Then preprocessing technique have to apply on both dataset. First run stemming_stopword.m file. From here we get all the dataset without stopword. Two file will create for normal bug and HIB bug. using this file we run wordfrequency.m file that calculate the frequency of each unique word and sort them into ascending order. From the frequency list we take top 1000 word as feature for term document matrix and prepare two traning file for two type dataset. From the main class we marge two train file and run 10-fold cross validation process for generating result. From main class with help of   EvalMetric.m and getAvgEval.m file we calculate result as true positive(TP) true negative(TN), precision, recall, f-measure, and average accurecy.
 
 
