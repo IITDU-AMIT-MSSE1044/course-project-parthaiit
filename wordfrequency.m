@@ -74,20 +74,8 @@ FreqWords=SortWords(IndBincounts); % sorting words according to their frequency
 FreqWords(1)=[];SortBincounts(1)=[]; % dealing with remaining white space
 
 FreqWords = FreqWords(1:1000);
-% delete('train.txt');
-% 
-% fid1 = fopen('train.txt','w');
-% 
-% 
-% [nrows,ncols] = size(FreqWords);
-% for  i = 1:ncols
-%     fprintf(fid1,'%s ' ,FreqWords{i});
-% end
-% 
-% fclose(fid1);
+ 
 
-
-% fid  = fopen('output.txt','r');
 
 fid  = fopen('regular_output_bug.txt','r');
 count = 1; 
@@ -117,7 +105,7 @@ while 1
 %    fid1 = fopen('train.txt','a');
    
    fid1 = fopen('regular_train_bug.txt','a');
-   fprintf(fid1,'4\t' );
+   fprintf(fid1,'1\t' );
    
 for  i = 1:ncols
     fprintf(fid1,'%d\t' ,counts(i));
@@ -130,18 +118,15 @@ fclose(fid);
 
 
 
-% Freq=SortBincounts/sum(SortBincounts)*100; % frequency percentage
-
-% %% plot
-% NMostCommon=20;
-% disp(Freq(1:NMostCommon))
-% pie([Freq(1:NMostCommon); 100-sum(Freq(1:NMostCommon))], [FreqWords(1:NMostCommon), {'other words'}]);
 
 
 
-%  delete('train.txt');
+
+% for cve bug
+
+ 
 delete('cve_train_bug.txt');
-Paragraph=lower(fileread('cve_output_bug.txt'));
+Paragraph=lower(fileread('regular_output_bug.txt'));
 
 % Paragraph=lower(fileread('output1.txt'));
 
@@ -212,20 +197,8 @@ FreqWords=SortWords(IndBincounts); % sorting words according to their frequency
 FreqWords(1)=[];SortBincounts(1)=[]; % dealing with remaining white space
 
 FreqWords = FreqWords(1:1000);
-% delete('train.txt');
-% 
-% fid1 = fopen('train.txt','w');
-% 
-% 
-% [nrows,ncols] = size(FreqWords);
-% for  i = 1:ncols
-%     fprintf(fid1,'%s ' ,FreqWords{i});
-% end
-% 
-% fclose(fid1);
+ 
 
-
-% fid  = fopen('output.txt','r');
 
 fid  = fopen('cve_output_bug.txt','r');
 count = 1; 
@@ -255,7 +228,7 @@ while 1
 %    fid1 = fopen('train.txt','a');
    
    fid1 = fopen('cve_train_bug.txt','a');
-   fprintf(fid1,'4\t' );
+   fprintf(fid1,'2\t' );
    
 for  i = 1:ncols
     fprintf(fid1,'%d\t' ,counts(i));
@@ -268,9 +241,4 @@ fclose(fid);
 
 
 
-% Freq=SortBincounts/sum(SortBincounts)*100; % frequency percentage
-
-% %% plot
-% NMostCommon=20;
-% disp(Freq(1:NMostCommon))
-% pie([Freq(1:NMostCommon); 100-sum(Freq(1:NMostCommon))], [FreqWords(1:NMostCommon), {'other words'}]);
+ 
