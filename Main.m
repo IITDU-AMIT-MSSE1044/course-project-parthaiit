@@ -72,7 +72,7 @@ for kk=1:no_of_fold
     pred_val = predict(model, newts_fea);
     
 
-% % % %     decision tre
+% % % %   decision tre
 
 
 %Classification
@@ -82,6 +82,11 @@ for kk=1:no_of_fold
 
     evals{kk} = EVAL;
     accuracies(kk)= accuracy;
+    Recall(kk)=EVAL.recall;
+    precision(kk)=EVAL.precision;
+    Fmeasure(kk)= EVAL.f_measure;
+    Tpositive=EVAL.tp;
+    Tnegative=EVAL.tn;
 
     fid = fopen('result_new.txt', 'a');
     fprintf('Iter---> %d : accurecy: %f \n', kk, accuracy);
@@ -94,8 +99,26 @@ for kk=1:no_of_fold
     fclose(fid);
 end
 
+
 Avg = getAvgEval(evals);
 fid = fopen('result_new.txt', 'a');
+
+fprintf('Average True positive(TP): %f\n', mean(Tpositive));
+fprintf(fid, 'Average True positive(TP): %f\n', mean(Tpositive));
+
+fprintf('Average True positive(TN): %f\n', mean(Tnegative));
+fprintf(fid, 'Average True Negative(TN): %f\n', mean(Tnegative));
+
+fprintf('Average Recall: %f\n', mean(Recall));
+fprintf(fid, 'Average Recall: %f\n', mean(Recall));
+
+fprintf('Average Precision: %f\n', mean(precision));
+fprintf(fid, 'Average precision: %f\n', mean(precision));
+
+
+fprintf('Average F-measure: %f\n', mean(Fmeasure));
+fprintf(fid, 'Average F-measure: %f\n', mean(Fmeasure));
+
 
 fprintf('Average accurecy: %f\n', mean(accuracies));
 fprintf(fid, 'Average accurecy: %f\n', mean(accuracies));
